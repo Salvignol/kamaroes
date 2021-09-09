@@ -1,0 +1,39 @@
+form{
+    
+    display: grid;
+    grid-template-columns: auto;
+    row-gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+	flex-direction: column;
+    background: white;
+    
+    
+}
+
+
+
+.informations{
+    display: grid;
+    grid-template-columns: auto;
+    font-weight: 500;
+    font-size: 1em;
+    align-items: center;
+    row-gap: 3rem;
+    background-color: rgba(200, 200, 200, .1);
+    width: 50rem;
+    padding: 3rem;
+}
+
+
+.grid{
+    
+    display: grid;
+    width: 100%;
+    grid-template-columns: auto ;
+    column-gap: 1.5rem;
+    row-gap: 1.5rem;
+    
+}
+

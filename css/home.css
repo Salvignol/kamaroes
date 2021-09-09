@@ -1,0 +1,143 @@
+
+form{
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    
+    align-items: center;
+    /* border: 2px dodgerblue dotted; */
+    width: 100%;
+    
+    
+}
+
+
+
+
+.form__container{
+    width: 100%;
+    background: white;
+    padding: .5rem;
+    align-items: center;
+   
+}
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+.header_dropdown{
+    margin: 0;
+}
+
+.header_dropdown:hover{
+    z-index: 99;
+    
+}
+
+
+.dropdown-button{
+    border:none;
+    
+    color: #abacad;
+    font-weight: 500;
+    font-size: 1rem;
+    
+    padding: 1em 1.5em;
+    transition: background-color 0.3s ease;
+    transition: color 0.1s ease;
+}
+
+.dropdown-button:hover{
+    color: white;
+    background: var(--secondary);
+}
+
+
+.header_dropdown-button{
+    background: white;
+    color: black;
+}
+
+
+.dropdown-content{
+    display: none;
+   position: absolute;
+   
+   padding: 1rem;
+    
+}
+
+
+
+.dropdown:hover .dropdown-content{
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown:hover .horizontal{
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+input[type=number]{
+    border: rgba(0, 0, 0, .5) 2px solid; 
+    font-size: 1.2rem;
+    background: none;
+    width: 4rem;
+}
+
+a{
+    color: blue;
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+
+.hyphen{
+    margin: 0rem 1rem;
+}
+
+
+.listing{
+    
+    padding: 2rem;
+    
+    display: grid;
+    grid-template-columns: 15rem 15rem  15rem;
+    column-gap: 2rem;
+    
+    row-gap: 2rem;
+
+}
+
+.listing_item{
+    
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+
+.listing_item_img{
+    
+    background: url('../assets/images/lv1.jpg') center;
+    box-shadow:5px 5px 15px rgba(0, 0, 0, .1);
+    background-size: cover;
+    width: 100%;
+    height: 10rem;
+}
+
+.listing_item_infos{
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 0rem;
+    font-weight: 500;
+}

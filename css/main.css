@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.page{
+    background: #fafafa;
+    box-shadow: none;
+}
+
+form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    /* border: 2px dodgerblue dotted; */
+    width: 100%;
+}
