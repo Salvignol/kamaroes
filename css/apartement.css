@@ -9,6 +9,7 @@
 .page{
     padding: 1rem;
     background: white;
+    width: 70rem;
     /* border: forestgreen 2px dotted; */
 }
 
@@ -145,6 +146,10 @@ i{
     object-fit: contain;
 }
 
+.splide__track{
+    border-radius: 1rem 1rem 0rem 0rem;
+}
+
 .splide__slide{
     object-fit: contain;
     
@@ -153,6 +158,7 @@ i{
 
 .splide__slide img{
     height: 100%;
+    border-radius: 1rem;
 }
 
 .sponsor{

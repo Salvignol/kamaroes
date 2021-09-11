@@ -12,34 +12,8 @@ catch(Exception $e)
     die('Error: '. $e->getMessage()); 
 }
 
+$response = $db->query('SELECT * FROM property');
 
-if(isset($_POST['min_price']) AND isset($_POST['max_price']) AND isset($_POST['bedroom']) AND isset($_POST['bathroom'])){
-    
-        
-
-        $response = $db->prepare(
-            'SELECT * 
-            FROM property 
-            WHERE price BETWEEN :min_price AND :max_price
-            AND bedroom = :bedroom
-            AND bathroom = :bathroom'
-            );
-        $response->execute(array(
-            'min_price' => $_POST['min_price'], 
-            'max_price' => $_POST['max_price'],
-            'bedroom' => $_POST['bedroom'], 
-            'bathroom' => $_POST['bathroom']
-        ));
-
-       
-    
-    
-    
-    
-        
-} else {
-    $response = $db->query('SELECT * FROM property' );
-}
 
 
 
@@ -53,8 +27,10 @@ if(isset($_POST['min_price']) AND isset($_POST['max_price']) AND isset($_POST['b
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="css/home.css">
+    
     <title>Document</title>
     
     
@@ -66,125 +42,9 @@ if(isset($_POST['min_price']) AND isset($_POST['max_price']) AND isset($_POST['b
     <?php include "headers/header.php"?>
 
     <form method="post" action="home.php">
-        <ul class="navigation-bar__container form__container">
-                
-            <div class="dropdown">
-                <div class="dropdown-button">
-                    <?php 
-                    if(isset($_POST['min_price']) AND isset($_POST['max_price'])){
-                        echo $_POST['min_price'].' - '.$_POST['max_price'];
-                    } else {
-                        echo 'Price';
-                    }
-                ?>
-                </div>
-                <div class="dropdown-content">
-                    <select name="min_price" id="min_price">
-                        <option value="50000">50K</option>
-                        <option value="100000">100K</option>
-                        <option value="150000">150K</option>
-                        <option value="200000">200K</option>
-                        <option value="250000">250K</option>
-                        <option value="300000">300K</option>
-                        <option value="350000">350K</option>
-                        <option value="400000">400K</option>
-                        <option value="450000">450K</option>
-                    </Select>
-
-                    <script type="text/javascript">
-                        document.getElementById('min_price').value = "<?php echo $_POST['min_price'];?>";
-                    </script>
-                    <select name="max_price" id="max_price">
-                        <option value="50000">50K</option>
-                        <option value="100000">100K</option>
-                        <option value="150000">150K</option>
-                        <option value="200000">200K</option>
-                        <option value="250000">250K</option>
-                        <option value="300000">300K</option>
-                        <option value="350000">350K</option>
-                        <option value="400000">400K</option>
-                        <option value="450000">450K</option>
-                    </Select>
-                    
-                </div>
-            </div>
-
-            <div class="dropdown">
-                <button class="dropdown-button"><?php echo $_POST['type'] ?? 'Type';?></button>
-                <div class="dropdown-content">
-                    <select name="type" id="type">
-                        <option value="apartments">Apartments</option>
-                        <option value="house">House</option>
-                        <option value="land">Land</option>
-                        <option value="warehouse">Warehouse</option>
-                    </Select>
-                    
-                </div>
-            </div>
-
-            <div class="dropdown">
-                <button class="dropdown-button"><?php echo $_POST['bedroom'] ?? '';?> Beds and <?php echo $_POST['bathroom']?? '';?> Baths</button>
-                <div class="dropdown-content">
-
-                    <div class="bedroom">
-                    <select name="bedroom" id="bedroom">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5+</option>
-                        </Select>
-                    </div>
-
-                    <div class="bathroom">
-                    <select name="bathroom" id="bathroom">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5+</option>
-                        </Select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="dropdown">
-                <button class="dropdown-button">Lot Size</button>
-                <div class="dropdown-content">
-                    <Select>
-                        <option value="">50K</option>
-                        <option value="">100K</option>
-                        <option value="">150K</option>
-                        <option value="">250K</option>
-                        <option value="">300K</option>
-                    </Select>
-                    <Select>
-                        <option value="">50K</option>
-                        <option value="">100K</option>
-                        <option value="">150K</option>
-                        <option value="">250K</option>
-                        <option value="">300K</option>
-                    </Select>
-                    
-                </div>
-            </div>
-
-            <script type="text/javascript">
-                        document.getElementById('min_price').value = "<?php echo $_POST['min_price'];?>";
-                        document.getElementById('max_price').value = "<?php echo $_POST['max_price'];?>";
-                        document.getElementById('type').value = "<?php echo $_POST['type'];?>";
-                        document.getElementById('bedroom').value = "<?php echo $_POST['bedroom'];?>";
-                        document.getElementById('bathroom').value = "<?php echo $_POST['bathroom'];?>";
-                        
-                    </script>
-
-            <input class="dropdown-button" type="submit" value="Filter">
-
-            
-
-            
-           
-        </ul>
+        <div class="features">
+    
+        </div>
     </form>
 
     <div class="main-wrapper ">
@@ -201,12 +61,38 @@ if(isset($_POST['min_price']) AND isset($_POST['max_price']) AND isset($_POST['b
                 
             ?>
 
-                <a class="listing_item" href="details.php?ref=1">
-                    <div class="listing_item_img">asdasd</div>
-                    <div class="listing_item_infos">
-                        <span><?php echo $data['type'].': '.$data['city'];?></span>
-                        <span><?php echo $data['bedroom'];?> bedrooms, </span>
-                        <span>CFA <?php echo $data['price'];?></span>
+                <a class="item" href="details.php?ref=1">
+                    <div class="item_image">
+                        <img src="assets/images/mi.jpg" alt="">
+                    </div>
+                    <div class="item_glance">
+                        <div class="item_infos">
+                            <p class="price">CFA <?php echo number_format($data['price'], $decimals = 0, $decimal_separator = ".", $thousands_separator = ",");?></p>
+
+                            <div class="other">
+                                <p class="category"><?php echo $data['type'];?> </p>
+                                <p class="type"><?php echo $data['mode'];?></p>
+                            </div>
+                        </div>
+
+                        <div class="location"><p><?php echo ucwords($data['city']).', Placeholder Neighbouhood';?></p></div>
+
+                        <div class="basic">
+                            <div class="basic_item">
+                                <i class="fas fa-bed fa-lg"></i> <p id="wifi" name="wifi"> 4 </p>
+                            </div>
+
+                            <div class="basic_item">
+                                <i class="fas fa-shower fa-lg"></i> <p id="wifi" name="wifi"> 4 </p>
+                            </div>
+                            
+                            <div class="basic_item">
+                                <i class="<i fas fa-ruler fa-lg"></i> <p id="wifi" name="wifi"> 4 </p>
+                            </div>
+                        </div>
+
+
+
                     </div>
                 
                 </a>
@@ -222,6 +108,12 @@ if(isset($_POST['min_price']) AND isset($_POST['max_price']) AND isset($_POST['b
             
         </section>
 
+        <div class="maps__container">
+            <div class="maps" id="maps"></div>
+        </div>
+       
+        
+
         
 
     </div>
@@ -229,6 +121,13 @@ if(isset($_POST['min_price']) AND isset($_POST['max_price']) AND isset($_POST['b
     <footer>
         
     </footer>
+
+    <script src="js/maps.js"></script>
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhhm3d1QKJsj5PcEvxtpiDRxm7imNEAR4&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
 
 </body>
 </html>

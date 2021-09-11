@@ -3,7 +3,7 @@
 :root {
     --primary1: black;
     --primary2: white;
-    --secondary: #00ab84/*#009a77*/;
+    --secondary: #1FB473/*#00ab84 #009a77*/;
     --ternary: rgba(200, 200, 200);
     /* --fourth: rgba(200, 200, 200, .2); */
     --fourth: rgb(245, 246, 248);
@@ -18,7 +18,7 @@
 }
 
 body{
-    background: red;
+    background: white;
 }
 
 
@@ -76,9 +76,10 @@ header {
 }
 
 .page {
-    background: 2px dotted royalblue;
+    /* background:  royalblue; */
     box-shadow: 1px 1px 20px -5px rgba(150, 150, 150, 0.4);
-    width: 70rem;
+    border-radius: 1rem;
+    /* width: 70rem; */
     /* box-shadow: 5px 20px 25px 5px rgba(210,210,210,0.4);  */
     
 }

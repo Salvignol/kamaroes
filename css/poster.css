@@ -73,7 +73,7 @@ form{
     font-size: 1em;
     align-items: center;
     row-gap: 3rem;
-    background-color: rgba(200, 200, 200, .1);
+    box-shadow: 1px 1px 20px -5px rgba(150, 150, 150, 0.4);
     width: 50rem;
     padding: 3rem;
 }
