@@ -41,83 +41,72 @@ $response = $db->query('SELECT * FROM property');
 
     <?php include "headers/header.php"?>
 
-    <form method="post" action="home.php">
-        <div class="features">
-    
+        <form method="post" action="home.php">
+            <div class="features">
+        
+            </div>
+        </form>
+
+        <div class="main-wrapper ">
+
+        <div class="banners">
+            <div class="banner">
+                <img src="assets/images/wildBannerAd.png" alt="">
+            </div>
+            <div class="banner">
+                <img src="assets/images/2707.jpg" alt="">
+            </div>
+            
         </div>
-    </form>
 
-    <div class="main-wrapper ">
-
-        <section class="page">
-            <div class="listing">
-
-            <?php
-            
-
-                while($data = $response->fetch())
-            
-                {    
-                
-            ?>
-
-                <a class="item" href="details.php?ref=1">
-                    <div class="item_image">
-                        <img src="assets/images/mi.jpg" alt="">
-                    </div>
-                    <div class="item_glance">
-                        <div class="item_infos">
-                            <p class="price">CFA <?php echo number_format($data['price'], $decimals = 0, $decimal_separator = ".", $thousands_separator = ",");?></p>
-
-                            <div class="other">
-                                <p class="category"><?php echo $data['type'];?> </p>
-                                <p class="type"><?php echo $data['mode'];?></p>
-                            </div>
-                        </div>
-
-                        <div class="location"><p><?php echo ucwords($data['city']).', Placeholder Neighbouhood';?></p></div>
-
-                        <div class="basic">
-                            <div class="basic_item">
-                                <i class="fas fa-bed fa-lg"></i> <p id="wifi" name="wifi"> 4 </p>
-                            </div>
-
-                            <div class="basic_item">
-                                <i class="fas fa-shower fa-lg"></i> <p id="wifi" name="wifi"> 4 </p>
-                            </div>
+            <section class="page">
+                <div class="listing">
+                    <div class="listing__results">
+                        <h3 class="results__title"> Apartment to Rent in Bastos, Yaounde</h3>
+                        <div class="options">
+                            <p class="results__number">1566 properties found on Kamaroes </p>
                             
-                            <div class="basic_item">
-                                <i class="<i fas fa-ruler fa-lg"></i> <p id="wifi" name="wifi"> 4 </p>
-                            </div>
                         </div>
-
-
-
                     </div>
-                
-                </a>
 
-            <?php
+                <?php
                 
-            
-            }
-            
-            ?>
-                
-                
-            
-        </section>
+                $i = 0; 
+                $j = 0;
+                    while($data = $response->fetch())
+                    {   
+                        if ($i < 5) {
+                            include 'components/item.php';
+                            $i++;
+                        }else{
+                            include 'components/item.php';
+                            include 'components/ad.php';
+                            include 'components/ad.php';
+                            include 'components/ad.php';
+                            $i=0;
+                        }
+                        $j++;
+                    } 
 
-        <div class="maps__container">
-            <div class="maps" id="maps"></div>
+                    if($i != 0 AND $j < 6){
+                        include 'components/ad.php';
+                        include 'components/ad.php';
+                        include 'components/ad.php';
+                    }
+                    
+                ?>
+
+                    
+                    
+                
+            </section>
+
+            <div class="maps__container">
+                <div class="maps" id="maps"></div>
+            </div>
+        
         </div>
-       
         
-
-        
-
-    </div>
-
     <footer>
         
     </footer>

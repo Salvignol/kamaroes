@@ -64,22 +64,20 @@ header {
 
 .main-wrapper {
     
-    background: 2px dotted firebrick;
+    border: 2px dotted firebrick;
     display: grid;
     grid-template-columns: auto;
     row-gap: 3rem;
     justify-content: center;
-    padding-top: 5em;
     
     
 
 }
 
 .page {
-    /* background:  royalblue; */
+    /* border: 2px dotted royalblue; */
     box-shadow: 1px 1px 20px -5px rgba(150, 150, 150, 0.4);
     border-radius: 1rem;
-    /* width: 70rem; */
     /* box-shadow: 5px 20px 25px 5px rgba(210,210,210,0.4);  */
     
 }
