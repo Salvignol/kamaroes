@@ -1,6 +1,67 @@
 <style>
 
-.nav{
+header{
+    /* border: 2px dotted green; */
+    z-index: 99;
+    position: fixed;
+    bottom: 0;
+}
+
+.nav {    
+    width: 100%;
+    background: white;
+    padding-bottom: 2.5rem;
+    /* box-shadow: 0px 5px 15px -5px rgba(50,50,50,0.8); */
+}
+
+a{
+    display: block;
+}
+
+.navigation-bar__container{
+    display: none;
+    grid-template-columns: repeat(5, auto);
+    
+}
+
+.mobile__nav {
+    width: 100%;
+    display: grid;
+    justify-content: space-evenly;
+}
+
+.nav ul a i {
+    color: var(--ternary);
+    padding: 1.5rem;
+    font-size: 1.3em
+    
+}
+
+
+.nav ul a i:hover{
+    color: var(--secondary);
+}
+
+.navigation-bar__item:hover{
+    background: white;
+    color: black;
+
+}
+
+
+.dropdown-button{
+    color: var(--ternary);
+    border-radius: .5rem;
+}
+
+.dropdown-button:hover{
+    color: white;
+    background: var(--secondary);
+}
+
+@media only screen and (min-width: 768px) {
+
+    .nav{
         justify-content: space-between;
     }
 
@@ -8,10 +69,12 @@
         display: flex;
     }
 
+    .mobile__nav {
+        display: none;
+    }
+
     header {    
         position: static;
-        /* border: green 2px dotted; */
-        
     }
 
     .nav{
@@ -33,39 +96,7 @@
 
     .dropdown-button{
         color: var(--ternary);
-    }
-
-    .dropdown-button:hover{
-        color: white;
-        background: var(--secondary);
-    }
-
-@media only screen and (min-width: 768px) {
-
-    .nav{
-        justify-content: space-between;
-    }
-
-    .navigation-bar__container{
-        display: flex;
-    }
-
-    header {    
-        position: static;
-    }
-
-    .nav{
-        width: 100%;
-        border-radius: 0;
-        box-shadow: none;
-    }
-
-    a{
-        display: block;
-    }
-
-    .dropdown-button{
-        color: var(--ternary);
+        border-radius: .5rem;
     }
 
     .dropdown-button:hover{
@@ -81,6 +112,16 @@
 <header class="navigation-bar">
     <div class="nav">
 
+
+        <ul class="navigation-bar__container mobile__nav">
+            <a href=""><i class="far fa-user-circle"></i></a>
+            <a href="dashboard.php"><i class="far fa-chart-bar"></i></a>
+            <a href="home.php"><i class="far fa-building"></i></a>
+            <a href=""><i class="fas fa-plus"></i></a>
+            <a href=""><i class="fas fa-sliders-h"></i></a>
+        </ul>
+
+    
         <ul class="navigation-bar__container">
 
         </ul>

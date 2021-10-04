@@ -86,4 +86,9 @@ if(isset($_POST['email']) AND isset($_POST['password' ])){
         </div>
     </div>
 </body>
+
+<script>
+    var image = document.querySelector('.image');
+    image.style.display = 'block';
+</script>
 </html>

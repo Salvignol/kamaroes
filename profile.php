@@ -17,9 +17,15 @@ if(!isset($_SESSION['first_name']) AND !isset($_SESSION['last_name'])){
     <title>Profile</title>
 </head>
 <body>
-    <?php include "headers/header_dashboard.php"?>
+
+<?php include "headers/header.php"?>
 
     <div class="main-wrapper">
+
+
+        <!-- <nav class="navigation">
+            
+        </nav> -->
         <section class="page">
         <form method="post" action = signin.php>
             

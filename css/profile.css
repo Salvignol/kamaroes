@@ -1,3 +1,12 @@
+.main-wrapper{
+    display: grid;
+    grid-template-columns: 20% 80%;
+}
+
+.page{
+    box-shadow: none;
+}
+
 form{
     
     display: grid;
@@ -7,7 +16,7 @@ form{
     align-items: center;
     padding: 3rem;
 	flex-direction: column;
-    background: white;
+
     
     
 }
@@ -35,5 +44,11 @@ form{
     column-gap: 1.5rem;
     row-gap: 1.5rem;
     
+}
+
+.navigation{
+    background: var(--fourth);
+    height: 100vh;
+
 }
 

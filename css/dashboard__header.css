@@ -1,0 +1,13 @@
+header{
+    background: black;
+    color: white;
+}
+
+.navigation-bar__item{
+    color: white;
+
+}
+
+.dropdown-content{
+    color: black;
+}

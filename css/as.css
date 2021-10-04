@@ -1,28 +1,16 @@
-.grid{
-    display: grid;
-    grid-template-columns: auto;
-    background: fuchsia;
-
+body{
+  display: flex;
+  /* border: goldenrod 4px dotted; */
 }
 
 .main-wrapper{
-    border: chartreuse 2px dotted;
+  width: 100%;
 }
 
 
 
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-  }
-
-  td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
+.container{
+  border: firebrick 2px dotted;
+  display: flex;
+  width: 100%;
+}

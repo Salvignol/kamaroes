@@ -1,9 +1,22 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['first_name']) AND !isset($_SESSION['last_name'])){
+if(!isset($_SESSION['first_name']) AND !isset($_SESSION['last_name']) AND !isset($_SESSION['id'])){
     header('Location: signin.php');
 }
+
+try
+{
+    $db = new PDO('mysql:host=localhost;dbname=kamaroes;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+}
+catch(Exception $e)
+{
+    die('Error: '. $e->getMessage()); 
+}
+
+$response = $db -> prepare('SELECT date_added FROM property WHERE user_id =:id');
+$response->execute(array('id' => $_SESSION['id']));
+
 ?>
 
 <!DOCTYPE html>
@@ -12,26 +25,17 @@ if(!isset($_SESSION['first_name']) AND !isset($_SESSION['last_name'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/as.css">
-    <title>Dashboard
-        
-    </title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/as.css"/>
+    <title>Adverts</title>
 </head>
 <body>
-
-   
-
-    <?php include "headers/navbar.php"?>
+    <?php include "headers/header_dashboard.php";?>
+    
     <div class="main-wrapper">
 
-        <?php include "headers/header.php"?>
-    
-        <div class="container">
-
         <section class="page">
-            <h2>List of Enquiries</h2>
+            <h2>List of advertisements</h2>
             <table>
 
                 <tr>
@@ -44,21 +48,25 @@ if(!isset($_SESSION['first_name']) AND !isset($_SESSION['last_name'])){
                     <th>Pictures</th>
                 </tr>
 
-               
+                <?php
+                
+                while($data = $response->fetch()){
+                        
+                ?>
 
                 <tr>
-                    <td>None</td>
+                    <td><?php echo $data['date_added'];?></td>
                     <td>Maria Anders</td>
                     <td>Germany</td>
                 </tr>
                 
-                
+                <?php
                     
                 }
 
-
+?>
                 <tr>
-                    <td>None</td>
+                    <td><?php echo'brazza'?></td>
                     <td>Maria Anders</td>
                     <td>Germany</td>
                 </tr>
@@ -69,14 +77,7 @@ if(!isset($_SESSION['first_name']) AND !isset($_SESSION['last_name'])){
                 </tr>
             </table>
         </section>
-
-
-        </div><!--container-->
     </div>
-    <script>
-
-
-    </script>
 
 </body>
 </html>

@@ -16,9 +16,6 @@ $response = $db->query('SELECT * FROM property');
 
 
 
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -30,8 +27,37 @@ $response = $db->query('SELECT * FROM property');
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="css/home.css">
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css"/>
     
     <title>Document</title>
+    <script>
+        document.addEventListener( 'DOMContentLoaded', function () {
+            var splide = new Splide( '.splide', {
+                type   : 'loop',
+                perPage: 3,
+                width: '100%',
+                arrows: false,
+                pagination:false,
+                autoplay: true,
+                interval:5000,
+                gap:'1em'
+            } ).mount();
+
+            // splide.on( 'autoplay:playing', function ( rate ) {
+            //     console.log( rate ); // 0-1
+                
+            //     } );
+                
+            splide.mount();
+            } );
+
+        
+
+
+        
+
+    </script>
     
     
 </head>
@@ -43,21 +69,30 @@ $response = $db->query('SELECT * FROM property');
 
         <form method="post" action="home.php">
             <div class="features">
-        
+                SDFSDFSDF
             </div>
         </form>
 
         <div class="main-wrapper ">
 
-        <div class="banners">
-            <div class="banner">
-                <img src="assets/images/wildBannerAd.png" alt="">
+            <div class="splide">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide" > <img src="assets/images/wildBannerAd.png" alt=""></li>
+                        <li class="splide__slide" ><img src="assets/images/banana.png" alt=""></li>
+                        <li class="splide__slide" ><img src="assets/images/2707.jpg" alt=""></li>
+                    </ul>
+                </div>
+                 
             </div>
-            <div class="banner">
-                <img src="assets/images/2707.jpg" alt="">
+
+            <div class="banners">
+                <div class="banner">
+                    <img src="assets/images/wildBannerAd.png" alt="">
+                </div>
             </div>
-            
-        </div>
+
+
 
             <section class="page">
                 <div class="listing">
@@ -74,24 +109,26 @@ $response = $db->query('SELECT * FROM property');
                 $i = 0; 
                 $j = 0;
                     while($data = $response->fetch())
-                    {   
-                        if ($i < 5) {
-                            include 'components/item.php';
-                            $i++;
-                        }else{
-                            include 'components/item.php';
-                            include 'components/ad.php';
-                            include 'components/ad.php';
-                            include 'components/ad.php';
-                            $i=0;
-                        }
-                        $j++;
-                    } 
+                    { 
+                        include 'components/item.php';
+                        
+                    //     if ($i < 5) {
+                    //         include 'components/item.php';
+                    //         $i++;
+                    //     }else{
+                    //         include 'components/item.php';
+                    //         include 'components/ad.php';
+                    //         include 'components/ad.php';
+                    //         include 'components/ad.php';
+                    //         $i=0;
+                    //     }
+                    //     $j++;
+                    // } 
 
-                    if($i != 0 AND $j < 6){
-                        include 'components/ad.php';
-                        include 'components/ad.php';
-                        include 'components/ad.php';
+                    // if($i != 0 AND $j < 6){
+                    //     include 'components/ad.php';
+                    //     include 'components/ad.php';
+                    //     include 'components/ad.php';
                     }
                     
                 ?>

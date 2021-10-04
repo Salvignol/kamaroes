@@ -1,18 +1,22 @@
+body{
+    display: flex;
+    /* border: goldenrod 4px dotted; */
+}
+
+.main-wrapper{
+    width: 100%;
+}
+
 
 
 .container{
     display: flex;
-    flex-direction: row;
-    width: 100%;
-
-}
-
-.container{
-    display: flex;
     width: 100%;
 }
+
 
 .image{
+    display: none;
     position: sticky;
     top: 0;
     filter: brightness(50%);
@@ -25,57 +29,34 @@
     
 }
 
-
-
 form{
+    
     
     display: grid;
     grid-template-columns: auto;
     row-gap: 3rem;
     justify-content: center;
     align-items: center;
-    padding: 3rem;
-	flex-direction: column;
+    padding: 2rem;
     background: white;
     
-    width: 60%;
-    
 }
 
-
-
-
-
-.header_dropdown{
-    margin: 0;
-}
-
-.header_dropdown:hover{
-    z-index: 99;
-    
-}
-
-
-.header_dropdown-button{
-    background: white;
-    color: black;
-}
-
-.dropdown:hover .horizontal{
-    display: flex;
-    flex-direction: row;
-}
 
 .informations{
-    display: grid;
+    display: none;
     grid-template-columns: auto;
     font-weight: 500;
     font-size: 1em;
     align-items: center;
     row-gap: 3rem;
-    box-shadow: 1px 1px 20px -5px rgba(150, 150, 150, 0.4);
-    width: 50rem;
-    padding: 3rem;
+    /* box-shadow: 1px 1px 20px -5px rgba(150, 150, 150, 0.4); */
+    padding: 1rem;
+}
+
+.property-description, .amenities{
+    display: grid;
+
 }
 
 
@@ -83,7 +64,8 @@ form{
     
     display: grid;
     width: 100%;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(3, 1fr);
+    /* border: 2px dotted fuchsia; */
     column-gap: 1.5rem;
     row-gap: 1.5rem;
     
@@ -91,6 +73,7 @@ form{
 
 input[type=text], select{
     border:rgba(200, 200, 200, .9) 1px solid;
+    width: 100%;
     padding: .5rem;
     font-weight: 500;
     font-size: 1em;
@@ -102,11 +85,16 @@ input[type=text], select{
     
 }
 
+.electricity, .water{
+    grid-column: 1/-1;
+    flex-direction: row;
+}
+
 
 
 .description{
     padding: 1rem;
-    grid-column: 1 /4;
+    grid-column: 1 /-1;
     
 }
 
@@ -114,15 +102,118 @@ label{
     margin-bottom: .5rem;
 }
 
-.price{
-    display: none;
-}
 
-.error {
+/* .error {
     padding: .5rem;
     color: crimson;
     position: relative;
     bottom: 0;
-   
+
+} */
+
+@media only screen and (min-width: 768px) {
+
+    .container{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+    }
+
+    .container{
+        display: flex;
+        width: 100%;
+    }
+
+    .image{
+        display: block;
+
+        
+    }
+
+
+
+    form{
+        
+        display: grid;
+        grid-template-columns: auto;
+        row-gap: 3rem;
+        justify-content: center;
+        align-items: center;
+        padding: 3rem;
+        flex-direction: column;
+        background: white;
+        
+        width: 60%;
+        
+    }
+
+    .informations{
+        display: none;
+        grid-template-columns: auto;
+        font-weight: 500;
+        font-size: 1em;
+        align-items: center;
+        row-gap: 3rem;
+        /* box-shadow: 1px 1px 20px -5px rgba(150, 150, 150, 0.4); */
+        width: 50rem;
+        padding: 1rem;
+    }
+
+    .property-description, .amenities{
+        display: grid;
+
+    }
+
+
+    .grid{
+        
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 1.5rem;
+        row-gap: 1.5rem;
+        
+    }
+
+    input[type=text], select{
+        border:rgba(200, 200, 200, .9) 1px solid;
+        padding: .5rem;
+        font-weight: 500;
+        font-size: 1em;
+    }
+
+    .inputs{
+        display: flex;
+        flex-direction: column;
+        
+    }
+
+    .electricity, .water{
+        grid-column: 1/-1;
+        flex-direction: row;
+    }
+
+
+
+    .description{
+        padding: 1rem;
+        grid-column: 1 /-1;
+        
+    }
+
+    label{
+        margin-bottom: .5rem;
+    }
+
+
+    .error {
+        padding: .5rem;
+        color: crimson;
+        position: relative;
+        bottom: 0;
+    
+    }
+
 }
 
