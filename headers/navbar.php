@@ -2,36 +2,26 @@
 
 
 .navigation{
-  position: sticky;
-  top: 0;
+    border-right: rgba(200,200,200,0.5) 1px solid;
+    position: sticky;
+    top: 0;
+
   display: flex;
   
   justify-content: start;
   align-items: center;
   height: 100vh;
-  width: 4rem;
-  background: black;
+  width: 16rem;
+
   transition: width .3s ease-out;
-}
-
-.navigation:hover {
-    width: 16rem;
-
 }
 
 .label{
     
-    display: none;
+    
     padding: 0 1rem;
     
     
-}
-
-.navigation:hover > .nav-menu .sss .label{
-    display: block;
-    
-    
-
 }
 
 .nav-menu{
@@ -46,7 +36,7 @@
 
 
 .nav-menu i {
-    color: white;
+    color: gray;
     padding: 1rem;
     font-size: 1.2em;
     border-radius: 50%;
@@ -61,7 +51,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    color: white;
+    color: black;
     white-space: nowrap;
     overflow: hidden;
     transition: color .2s ease-out;

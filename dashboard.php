@@ -15,21 +15,20 @@ if(!isset($_SESSION['first_name']) AND !isset($_SESSION['last_name'])){
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/as.css">
-    <title>Dashboard
-        
-    </title>
+    <title>Dashboard</title>
 </head>
 <body>
 
    
 
     <?php include "headers/navbar.php"?>
+    
     <div class="main-wrapper">
-
-        <?php include "headers/header.php"?>
+    
+        
     
         <div class="container">
-
+            <?php include "headers/header.php"?>
         <section class="page">
             <h2>Dashboard</h2>
             

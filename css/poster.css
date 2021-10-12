@@ -1,74 +1,21 @@
-body{
-    display: flex;
-    /* border: goldenrod 4px dotted; */
-}
-
-.main-wrapper{
-    width: 100%;
-}
 
 
 
-.container{
-    display: flex;
-    width: 100%;
-}
 
 
-.image{
-    display: none;
-    position: sticky;
-    top: 0;
-    filter: brightness(50%);
-    height: 100vh;
-    width: 40%;
-    background: url('../assets/images/pere-ono.jpg') no-repeat;
-    background-position: center;
-    background-size: cover;
-
-    
-}
-
-form{
-    
-    
-    display: grid;
-    grid-template-columns: auto;
-    row-gap: 3rem;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    background: white;
-    
-}
 
 
-.informations{
-    display: none;
-    grid-template-columns: auto;
-    font-weight: 500;
-    font-size: 1em;
-    align-items: center;
-    row-gap: 3rem;
-    /* box-shadow: 1px 1px 20px -5px rgba(150, 150, 150, 0.4); */
-    padding: 1rem;
-}
-
-.property-description, .amenities{
-    display: grid;
-
-}
 
 
-.grid{
-    
-    display: grid;
-    width: 100%;
-    grid-template-columns: repeat(3, 1fr);
-    /* border: 2px dotted fuchsia; */
-    column-gap: 1.5rem;
-    row-gap: 1.5rem;
-    
+
+
+
+
+
+.choice{
+    /* border: orange 2px dotted; */
+    padding: 15% 0;
+   
 }
 
 input[type=text], select{
@@ -76,12 +23,13 @@ input[type=text], select{
     width: 100%;
     padding: .5rem;
     font-weight: 500;
-    font-size: 1em;
+    font-size: .5em;
 }
 
 .inputs{
     display: flex;
     flex-direction: column;
+    /* border: forestgreen 2px dotted; */
     
 }
 
@@ -113,21 +61,42 @@ label{
 
 @media only screen and (min-width: 768px) {
 
+    
+    
+    h2{
+        font-size: 2em;
+        font-weight: 300;
+    }
+    
+    h3{
+        font-weight: 400;
+        font-size: 1.5em;
+        grid-column: 1 /-1;
+    
+    }
+    .main-wrapper{
+        width: 100%;
+    }
+    
+    
+    
     .container{
         display: flex;
-        flex-direction: row;
-        width: 100%;
-
-    }
-
-    .container{
-        display: flex;
         width: 100%;
     }
-
+    
+    
     .image{
-        display: block;
-
+        position: sticky;
+        top: 0;
+        filter: brightness(50%);
+        height: 100vh;
+        width: 40%;
+        background: url('../assets/images/pere-ono.jpg') no-repeat;
+        background-position: center;
+        background-size: cover;
+        
+    
         
     }
 
@@ -149,28 +118,42 @@ label{
     }
 
     .informations{
+        
         display: none;
         grid-template-columns: auto;
         font-weight: 500;
         font-size: 1em;
         align-items: center;
-        row-gap: 3rem;
+        row-gap: 4rem;
         /* box-shadow: 1px 1px 20px -5px rgba(150, 150, 150, 0.4); */
-        width: 50rem;
-        padding: 1rem;
+        min-width: 30rem;
+        padding: 1rem 1rem 3rem 1rem;
+        border-bottom: lightgray 1px solid;
     }
 
-    .property-description, .amenities{
+    .property-description, .amenities, .property, .bills, .land{
         display: grid;
-
+    
     }
 
 
     .grid{
         
         display: grid;
+        font-weight: 400;
         width: 100%;
         grid-template-columns: repeat(3, 1fr);
+        column-gap: 1.5rem;
+        row-gap: 1.5rem;
+        
+    }
+
+    .grid2{
+    
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+        /* border: 2px dotted fuchsia; */
         column-gap: 1.5rem;
         row-gap: 1.5rem;
         
@@ -181,11 +164,25 @@ label{
         padding: .5rem;
         font-weight: 500;
         font-size: 1em;
+        border-radius: .2em;
     }
 
+    input:focus, select:focus{
+        border: rgba(0, 185, 255,1) 1px solid;
+        
+    }
+
+
     .inputs{
+        
         display: flex;
         flex-direction: column;
+        
+    }
+
+    .textLabel{
+        font-size: .9em;
+        color: grey;
         
     }
 
@@ -214,6 +211,8 @@ label{
         bottom: 0;
     
     }
+
+    
 
 }
 

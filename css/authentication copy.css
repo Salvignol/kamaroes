@@ -1,0 +1,208 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background:  #00b9ff;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    width: 100%;
+    height: 100vh;
+}
+
+.cao{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+    background: white;
+    /* border:  2px orange dotted; */
+    border-radius: 2rem;
+    width: 70%;
+    height: 100%;
+    /* box-shadow: 1px 1px 20px -5px rgba(150, 150, 150, 0.4); */
+}
+
+.image{
+    display: block;
+    /* filter: brightness(50%); */
+    height: 100%;
+    
+    background: url('../assets/images/hoy.png') no-repeat;
+    box-shadow: 1px 1px 20px -5px rgba(150, 150, 150, 0.4);
+    border-radius: 2rem;
+    background-position: center;
+    background-size: cover;
+    
+
+    
+}
+
+.signin{
+    /* border: 2px dotted yellowgreen; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 100%;
+    
+    
+}
+
+form{
+    
+    display: flex;
+    padding: 3rem;
+    flex-direction: column;
+    align-items: center;
+    
+    background: white;
+    border-radius: .5em;
+}
+
+.authentication{
+    
+    width: 20rem;
+    margin-bottom: 1rem;
+}
+
+.authentication_names{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+input {
+    outline: none;
+    width: 100%;
+    height: 3rem;
+    border: none;
+    border-bottom: 1px rgba(230,230,230,7) solid;
+    padding: 0.5rem;
+
+}
+
+.authentication_names input{
+    
+    width: 9rem;
+}
+
+
+
+.login-buttons{
+    display: flex;
+    color: white;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 10.5rem;
+    width: 20rem;
+
+
+}
+
+.login-button{
+    background: rgb(0, 102, 31);
+    color: white;
+    font-family: "Roboto", sans-serif;
+    border: none;
+    font-size: .9em;
+    font-weight: 500;
+    /* box-shadow:5px 5px 15px rgba(0, 0, 0, .1); */
+    border-radius: 0.1rem;
+    height: 3rem;
+    transition: background 0.3s;
+}
+
+.login-button:hover{
+     background: rgba(230,230,230, 0.7);
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 20rem;
+    height: 3rem;
+    margin-top: 1rem;
+}
+.login{
+    /*background: linear-gradient(143deg, rgba(255,0,134,1) 0%, rgba(255,0,91,1) 100%);*/
+    background: black;
+    color: white;
+    font-size: 1.1em;
+    border: none;
+    width: 100%;
+    height: 100%;
+    transition: background 0.3s;
+    
+}
+
+.login:hover{
+    background: rgba(0, 0,0, 0.8);
+    
+    
+}
+
+#or {
+
+    border: 2px green dotted;
+  position: relative;
+  width: 100%;
+  height: 50px;
+  
+  line-height: 50px;
+  text-align: center;
+}
+
+.separator {
+    width: 20rem;
+    border-bottom: rgba(230,230,230, 0.7) solid 1px;
+    position: relative;
+    margin: 30px 0px;
+}
+
+.separator::before {
+    content: "or";
+    font-size: 1.2em;
+    font-family: "Roboto", sans-serif;
+    color: rgba(200,200,200, 1);
+    position: absolute;
+    left: 45%;
+    top: -0.8rem;
+    background-color: #fff;
+
+    padding: 0px 10px;
+}
+
+.information{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: absolute;
+    bottom: 0;
+    padding: 2em;
+    height: 60%;
+    /*border: 2px dotted pink;*/
+}
+
+.text{
+    width: 23rem;
+    
+    margin-top: 1em;
+}
+
+p{
+    font-family: "Roboto", Verdana, Geneva, Tahoma, sans-serif;
+    font-size: .9em;
+   
+}
+
+
+

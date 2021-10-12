@@ -1,10 +1,7 @@
-body{
-  display: flex;
-  /* border: goldenrod 4px dotted; */
-}
 
 .main-wrapper{
   width: 100%;
+  border: green 2px dotted;
 }
 
 

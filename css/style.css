@@ -15,6 +15,7 @@
     box-sizing: border-box;
     outline: none;
     font-family: 'Roboto', sans-serif;
+    font-weight: 400;
 }
 
 body{
@@ -29,7 +30,6 @@ a{
 }
 
 header{
-    
     width: 100%;
     display: flex;
     justify-content: center;
@@ -58,6 +58,11 @@ header{
 
 } */
 
+.main-wrapper {
+    margin: auto;
+    /* border: firebrick 2px dotted; */
+    
+}
 
 
 

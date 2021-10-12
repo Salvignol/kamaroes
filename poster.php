@@ -18,6 +18,8 @@ catch(Exception $e)
     die('Error: '.$e->getMessage());
 }
 
+
+
 $description = array();
 $features = array();
 $errors = array(
@@ -219,101 +221,110 @@ if(isset($_POST['city']) AND isset($_POST['category']) AND isset($_POST['transac
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/poster.css">
-    <link rel="stylesheet" href="css/dashboard__header.css">
     <title>Dashboard</title>
 </head>
 <body>
 
    
 
-    <?php include "headers/navbar.php"?>
+    
     <div class="main-wrapper">
         <?php include "headers/header.php"?>
     
         <div class="container">
-
-            <div class="image"></div>
+        <?php include "headers/navbar.php"?>
             
             <form enctype="multipart/form-data" method="post" action="poster.php">
 
-            
-                
                 <div class="informations property-description">
                             
                     <h2>Description</h2>
 
                         <div class="grid">
 
-                        <div class="inputs">
-                            <label for="city">City:</label>
-                            <select name="city" id="city">
-                                <!-- <option disabled selected="selected">None</option> -->
-                                <option value="yaounde" selected>Yaounde</option>
-                                <option value="douala">Douala</option>
-                                <option value="bertoua">Bertoua</option>
-                            </select>
-                        </div>
-                        
-
-                        <div class="inputs">
-                            <label for="neigborhood">Neigborhood:</label>
-                            <select name="neigborhood" id="neigborhood" disabled>
-                                <option value="rent">To Rent</option>
-                                <option value="sale">For Sale</option>
-                            </select>
-                        </div>
-
-                        <div class="inputs">
-                            <label for="neigborhood">Neigborhood:</label>
-                            <select name="neigborhood" id="neigborhood" disabled>
-                                <option value="rent">To Rent</option>
-                                <option value="sale">For Sale</option>
-                            </select>
-                        </div>
-                        
-                        
-                        <div class="inputs">
-                            <label for="category">Category:</label>
-                            <select name="category" id="category">
-                                <option value="house" selected disabled>None</option>
-                                <option value="house">House</option>
-                                <option value="apartment">Apartment</option>
-                                <option value="office">Office</option>
-                                <option value="land">Land</option>
-                            </select>
+                            <div class="inputs">
+                                <label for="city">City:</label>
+                                <select name="city" id="city">
+                                <?php 
+                                $cities = $db->query('SELECT * FROM city');
+                                while($data = $cities->fetch())
+                                {
+                                ?>
+                                    <!-- <option disabled selected="selected">None</option> -->
+                                    <option value="<?php echo $data['id'];?>"><?php echo ucwords(str_replace("_"," ",$data['city']));?></option>
+                                <?php
+                                };
+                                $cities->closeCursor();
+                                ?>
+                                </select>
+                            </div>
                             
+
+                            <div class="inputs">
+                                <label for="neigborhood">Neigbourhood:</label>
+                                <input type="text" name="neigbourhood" id="neigbourhood" placeholder="enter here"/>
+                                <p class="error">none</p>   
+                            </div>
+
+                            <div class="inputs">
+                                <label for="neigborhood">Neigbourhood:</label>
+                                <input type="text" name="neigbourhood" id="neigbourhood" placeholder="enter here"/>
+                                <p class="error">none</p>   
+                            </div>
+
+                            <!-- <textarea  class="description" name="description" id="description" cols="30" rows="10"></textarea> -->
+
+                        </div><!--grid-->
+
+                        <div class="grid2 ">
+                            <div class="inputs">
+                                <label for="transaction">Transaction:</label>
+                                <select name="transaction" id="transaction" >
+                                    <option value="house" selected disabled>None</option>
+                                    <option value="rental">To rent</option>
+                                    <option value="sale">For Sale</option>
+                                </select>
+                            </div>
                         </div>
 
-                        <div class="inputs">
-                            <label for="transaction">Transaction:</label>
-                            <select name="transaction" id="transaction" >
-                                <option value="house" selected disabled>None</option>
-                                <option value="rental">To rent</option>
-                                <option value="sale">For Sale</option>
-                            </select>
+                        <div class="grid2">
+                            <div class="inputs">
+                            <label for="category">Category:</label>
+                                <select name="category" id="category">
+                                    <option value="villa" selected disabled>None</option>
+                                    <optgroup label="House Type">
+                                        <option value="villa">Villa</option>
+                                        <option value="duplex">Duplex</option>
+                                        <option value="detached">Detached</option>
+                                        <option value="semi_detached">Semi Detached</option>
+                                    </optgroup>
+
+                                    <optgroup label="Apartment Type">
+                                        <option value="studio">Villa</option>
+                                        <option value="alcove_studio">Alcove Studio</option>
+                                        <option value="traditional">Traditional/Convertible</option>
+                                        <option value="loft">Condo</option>
+                                        <option value="condo">High-Rise</option>
+                                    </optgroup>
+
+                                    <optgroup label="Office Type">
+                                        <option value="traditional">Traditional Office</option>
+                                        <option value="open">Open Office</option>
+                                    </optgroup>
+
+                                    <option value="land">Land</option>
+                                </select>
+                            </div>
                         </div>
-
-                        <textarea  class="description" name="description" id="description" cols="30" rows="10"></textarea>
-
                     </div>
-                </div>
 
-                <div class="informations transaction sale">
-                    <h2>Sales</h2>
 
-                    <div class="grid">
-                        
-                        <div class="inputs noBuild unit">
-                            <label for="unit">Unit:</label>
-                            <input type="text" name="unit" id="unit" value="1"/>
-                            <p class="error">none</p>   
-                        </div>
+                <div class="informations property">
 
-                        <div class="inputs noBuild byUnit">
-                            <label for="byUnit">By Uniy:</label>
-                            <input type="text" name="byUnit" id="byUnit" value="1"/>
-                            <p class="error">none</p>   
-                        </div>
+                    <h2>Property</h2>
+
+                    <div class="grid2">
+                        <h3>Sale</h3>
 
                         <div class="inputs price">
                             <label for="price">Price:</label>
@@ -321,277 +332,230 @@ if(isset($_POST['city']) AND isset($_POST['category']) AND isset($_POST['transac
                             <p class="error">none</p>   
                         </div>
                     </div>
-                </div>
 
-                <div class="informations transaction rental">
-                            
-                    <h2>Rental</h2>
+                    <div class="grid">
+                             <h3>Rental</h3>
 
-                        <div class="grid">
+                            <div class="inputs rent">
+                                <label for="rent">Rent/Month:</label>
+                                <input type="text" name="rent" id="rent" value="1"/>
+                                <p class="error">none</p>   
+                            </div>
 
-                        <div class="inputs rent">
-                            <label for="rent">Rent/Month:</label>
-                            <input type="text" name="rent" id="rent" value="1"/>
-                            <p class="error">none</p>   
-                        </div>
+                            <div class="inputs rent">
+                                <label for="rent">Rent/Month:</label>
+                                <input type="text" name="rent" id="rent" value="1"/>
+                                <p class="error">none</p>   
+                            </div>
 
+                           
+
+                    </div>
+
+                    <div class="grid2">
                         <div class="inputs noLand down_payment">
                             <label for="down_payment">Down Payment/Month:</label>
                             <input type="text" name="down_payment" id="down_payment" value="1"/>
                             <p class="error">none</p>   
                         </div>
 
+                        
+                    </div>
+                    <div class="grid2">
                         <div class="inputs noLand deposit">
                             <label for="deposit">Deposit:</label>
                             <input type="text" name="deposit" id="deposit" value="1"/>
                             <p class="error">none</p>   
                         </div>
+                    </div>
 
-                        <div class="inputs noBuild unit">
+                    <div class="grid">
+                        <h3>Rooms</h3>
+
+                        <?php 
+                        $rooms = $db->query('SELECT * FROM room');
+                        while($data = $rooms->fetch())
+                        {
+                        ?>
+
+                        <div class="inputs <?php echo $data['room'];?>">
+                            <label class="checkboxLabel" for="<?php echo $data['room'];?>"> <input class="custom-checkbox" type="checkbox" id="<?php echo $data['room'];?>" name="<?php echo $data['room'];?>" value="<?php echo $data['room'];?>"/> <?php echo ucwords(str_replace("_"," ",$data['room']));?>  </label>
+                            <label class="textLabel" for="<?php echo $data['room'];?>-amount">Amount:</label><input class="custom-text" type="text" disabled="disabled" name="<?php echo $data['room'];?>-amount" id="<?php echo $data['room'];?>-amount" placeholder="0"/>
+                            <p class="error">none</p>
+                        </div>
+
+                        
+
+                        <?php
+                        };
+                        $rooms->closeCursor();
+                        ?>
+
+                        <script>
+                            let bedd = document.querySelector('.bedoorm-checkbox');
+                            // bedd.style.background = "orange";
+
+                            // bedd.style.display = "none";
+
+                            /* Disable Text inputs with class name "custom-text" 
+                            if checkbox with class name "custom-checkbox" is unckecked
+                            (To optimise later)
+                            */
+
+                            var checkboxes = document.getElementsByClassName('custom-checkbox'); // Get all the Chexboxes
+                            var textInputs = document.getElementsByClassName('custom-text'); // Get all the Chexboxes
+                            
+                            // for every checkboxes add "change" event listner to see if chexbox is checked or not
+                            for (let i = 0; i <checkboxes.length; i++) {
+                                checkboxes[i].addEventListener('change', function(){
+
+                                    /* 
+                                    If checked, go trough every text inputs (textInputs array) 
+                                    and see if text inputs have the current checkbox id + "amount".
+                                    */
+                                    if (this.checked) {
+                                        for (let j = 0; j < textInputs.length; j++) {
+                                            if (textInputs[j].id == checkboxes[i].id + '-amount'){
+                                                textInputs[j].disabled = false;
+                                            }
+                                            
+                                        }
+                                    } else {
+                                        for (let j = 0; j < textInputs.length; j++) {
+                                            if (textInputs[j].id == checkboxes[i].id + '-amount'){
+                                                textInputs[j].disabled = true;
+                                            }
+                                            
+                                        }
+                                    }
+                                });
+                                
+                            }
+
+
+
+                        </script>
+
+                    </div>
+
+                    
+
+                    <div class="grid">
+                        <h3>Features</h3>
+
+                        <?php
+                            $features = $db->query('SELECT * FROM feature');
+                            while($data = $features->fetch())
+                            {
+                        ?>
+
+                        <div class="inputs <?php echo $data['feature'];?>">
+                            <label class="checkboxLabel" for="<?php echo $data['feature'];?>"> <input type="checkbox" id="<?php echo $data['feature'];?>" name="<?php echo $data['feature'];?>" value="<?php echo $data['feature'];?>"/> <?php echo ucwords(str_replace("_"," ",$data['feature']));?>  </label>
+                            <label class="textLabel" for="<?php echo $data['feature'];?>-amount">Amount:</label><input type="text" name="<?php echo $data['feature'];?>-amount" id="<?php echo $data['feature'];?>-amount" value="0"/>
+                            <p class="error">none</p>
+                        </div>
+
+                        <?php
+                            };
+                            $features->closeCursor();
+                        ?>
+                    </div>               
+    
+               
+
+                
+
+                    <div class="grid">
+                        <h3>Amenities</h3>
+
+                        <?php
+                            $amenities = $db->query('SELECT * FROM amenity');
+                            while($data = $amenities->fetch())
+                            {
+                        ?>
+
+                        <label for="<?php echo $data['amenity'];?>"> <input type="checkbox" id="<?php echo $data['amenity'];?>" name="<?php echo $data['amenity'];?>" value="<?php echo $data['amenity'];?>"/> <?php echo ucwords(str_replace("_"," ",$data['amenity']));?>  </label>
+                        
+                        <?php
+                            };
+                            $amenities->closeCursor();
+                        ?>
+
+                        <!-- <label for="restaurant"> <input type="checkbox" id="restaurant" name="restaurant" value="restaurant"/> Restaurant  </label>
+                        <label for="park"> <input type="checkbox" id="park" name="park" value="park"/> Park  </label>
+                        <label for="club"> <input type="checkbox" id="club" name="club" value="club"/> Club  </label>
+                        <label for="supermarket "> <input type="checkbox" id="supermarket " name="supermarket " value="supermarket "/> Supermarket   </label> -->
+                    </div>
+
+                
+
+                </div>
+
+               
+                
+
+
+                
+
+                <div class="informations land">
+                            
+                    <h2>Land</h2>
+
+                    <div class="grid">
+                        <h3>Sale</h3>
+                        
+                        <div class="inputs unit">
                             <label for="unit">Unit:</label>
                             <input type="text" name="unit" id="unit" value="1"/>
                             <p class="error">none</p>   
                         </div>
-                        
+
+                        <div class="inputs byUnit">
+                            <label for="byUnit">By Uniy:</label>
+                            <input type="text" name="byUnit" id="byUnit" value="1"/>
+                            <p class="error">none</p>   
+                        </div>
                     </div>
-                </div>
 
-                <div class="informations property house">
-                            
-                    <h2>House</h2>
-
-                        <div class="grid">
-
-                        
-
-                        <div class="inputs furnished">
-                            <label for="furnished">House Type:</label>
-                            <select name="furnished" id="furnished">
-                                <option value="yes" selected>Yes</option>
-                                <option value="no">No</option>
-                            </select>
+                    <div class="grid2">
+                        <div class="inputs price">
+                            <label for="price">Price:</label>
+                            <input type="text" name="price" id="price" value="1" />
+                            <p class="error">none</p>   
                         </div>
-
-                        <div class="inputs titled">
-                            <label for="titled">Titled:</label>
-                            <select name="titled" id="titled">
-                                <option value="yes" selected>Yes</option>
-                                <option value="no">No</option>
-                            </select>
-                        </div>
-
-
-                        <div class="inputs furnished">
-                            <label for="furnished">Furnished:</label>
-                            <select name="furnished" id="furnished">
-                                <option value="yes" selected>Yes</option>
-                                <option value="no">No</option>
-                            </select>
-                        </div>
-
-
-                        <div class="inputs bedrooms">
-                            <label for="bedrooms">Bedrooms:</label>
-                            <input type="text" name="bedrooms" id="bedrooms" value="1"/>
-                            <p class="error">none</p>
-
-                            
-                        </div>
-
-                        <div class="inputs kitchen">
-                            <label for="kitchen">Kitchen:</label>
-                            <input type="text" name="kitchen" id="kitchen" value="1"/>
-                            <p class="error">none</p>
-
-                            
-                        </div>
-                    
-
-                        <div class="inputs bathrooms">
-                            <label for="bathrooms">Bathrooms:</label>
-                            <input type="text" name="bathrooms" id="bathrooms" value="1"/>
-                            <p class="error">none</p>
-                        </div>
-                        
-                        
-                        <div class="inputs floors">
-                            <label for="floors">Floors:</label>
-                            <input type="text" name="floors" id="floors" value="1"/>
-                            <p class="error">none</p>
-                        </div>
-
-                        
-                        
-                        <div class="inputs rooms">
-                            <label for="rooms">Empty rooms:</label>
-                            <input type="text" name="rooms" id="rooms" value="0"/>
-                            <p class="error">none</p>
-                        </div>
-
-                        
-
-                        <div class="inputs garages">
-                            <label for="garages">garages:</label>
-                            <input type="text" name="garages" id="garages" value="0"/>
-                            <p class="error">none</p>
-                        </div>
-
-                        <div class="inputs">
-                            <label for="size">size:</label>
-                            <input type="text" name="size" id="size" placeholder="m2"/>
-                            
-                        </div>
-
-                        
                     </div>
-                </div>
 
-                <div class="informations property apartment">
-                            
-                    <h2>Apartment</h2>
+                    <div class="grid">
+                             <h3>Rental</h3>
 
-                        <div class="grid">
+                            <div class="inputs rent">
+                                <label for="rent">Rent/Month:</label>
+                                <input type="text" name="rent" id="rent" value="1"/>
+                                <p class="error">none</p>   
+                            </div>
 
-                        <div class="inputs furnished">
-                            <label for="furnished">Apartment Type:</label>
-                            <select name="furnished" id="furnished">
-                                <option value="yes" selected>Yes</option>
-                                <option value="no">No</option>
-                            </select>
-                        </div>
+                            <div class="inputs noLand down_payment">
+                                <label for="down_payment">Down Payment/Month:</label>
+                                <input type="text" name="down_payment" id="down_payment" value="1"/>
+                                <p class="error">none</p>   
+                            </div>
 
+                            <div class="inputs noLand deposit">
+                                <label for="deposit">Deposit:</label>
+                                <input type="text" name="deposit" id="deposit" value="1"/>
+                                <p class="error">none</p>   
+                            </div>
 
-                        <div class="inputs furnished">
-                            <label for="furnished">Furnished:</label>
-                            <select name="furnished" id="furnished">
-                                <option value="yes" selected>Yes</option>
-                                <option value="no">No</option>
-                            </select>
-                        </div>
-
-
-                        <div class="inputs bedrooms">
-                            <label for="bedrooms">Bedrooms:</label>
-                            <input type="text" name="bedrooms" id="bedrooms" value="1"/>
-                            <p class="error">None</p>
-
-                            
-                        </div>
-
-                        <div class="inputs kitchen">
-                            <label for="kitchen">Kitchen:</label>
-                            <input type="text" name="kitchen" id="kitchen" value="1"/>
-                            <p class="error">None</p>
-
-                            
-                        </div>
-                    
-
-                        <div class="inputs bathrooms">
-                            <label for="bathrooms">Bathrooms:</label>
-                            <input type="text" name="bathrooms" id="bathrooms" value="1"/>
-                            <p class="error">None</p>
-                        </div>
-                        
-                        
-                        <div class="inputs level">
-                            <label for="level">Floor Level:</label>
-                            <input type="text" name="level" id="level" value="0"/>
-                            <p class="error">None</p>
-                        </div>
-
-                        
-                        
-                        <div class="inputs rooms">
-                            <label for="rooms">Empty rooms:</label>
-                            <input type="text" name="rooms" id="rooms" value="0"/>
-                            <p class="error">None</p>
-                        </div>
-
-                        
-
-                        <div class="inputs parking">
-                            <label for="parking">Parking:</label>
-                            <select name="parking" id="parking">
-                                <option value="yes" selected>Yes</option>
-                                <option value="no">No</option>
-                            </select>
-                            <p class="error">None</p>
-                        </div>
-
-                        <div class="inputs">
-                            <label for="size">size:</label>
-                            <input type="text" name="size" id="size" placeholder="m2"/>
-                            
-                        </div>
-
-                        
+                            <div class="inputs noBuild unit">
+                                <label for="unit">Unit:</label>
+                                <input type="text" name="unit" id="unit" value="1"/>
+                                <p class="error">none</p>   
+                            </div>
                     </div>
-                </div>
 
-                <div class="informations property office">
-                            
-                    <h2>Office</h2>
+                    <div class="grid">
 
-                        <div class="grid">
-
-                        <div class="inputs office-location">
-                            <label for="furnished">Apartment Type:</label>
-                            <select name="furnished" id="furnished">
-                                <option value="yes" selected>Yes</option>
-                                <option value="no">No</option>
-                            </select>
-                        </div>
-
-
-                        <div class="inputs furnished">
-                            <label for="furnished">Furnished:</label>
-                            <select name="furnished" id="furnished">
-                                <option value="yes" selected>Yes</option>
-                                <option value="no">No</option>
-                            </select>
-                        </div>
-                        
-                        
-                        <div class="inputs floors">
-                            <label for="floors">Floors:</label>
-                            <input type="text" name="floors" id="floors" value="1"/>
-                            <p class="error">None</p>
-                        </div>
-
-                        
-                        
-                        <div class="inputs rooms">
-                            <label for="rooms">Empty rooms:</label>
-                            <input type="text" name="rooms" id="rooms" value="0"/>
-                            <p class="error">None</p>
-                        </div>
-
-                        
-                        <div class="inputs parking">
-                            <label for="parking">Parking:</label>
-                            <select name="parking" id="parking">
-                                <option value="yes" selected>Yes</option>
-                                <option value="no">No</option>
-                            </select>
-                            <p class="error">None</p>
-                        </div>
-
-                        <div class="inputs">
-                            <label for="size">size:</label>
-                            <input type="text" name="size" id="size" placeholder="m2"/>
-                            
-                        </div>
-
-                        
-                    </div>
-                </div>
-
-                <div class="informations property land">
-                            
-                    <h2>Land</h2>
-
-                        <div class="grid">
+                   
 
                         <div class="inputs">
                             <label for="size">size:</label>
@@ -603,6 +567,8 @@ if(isset($_POST['city']) AND isset($_POST['category']) AND isset($_POST['transac
                             <input type="text" name="land-title" id="land-title" placeholder="000000"/> 
                         </div>
 
+
+                    
                         
                     </div>
                 </div>
@@ -634,11 +600,6 @@ if(isset($_POST['city']) AND isset($_POST['category']) AND isset($_POST['transac
                             <p class="error">None</p>
                         </div>
 
-                        <div class="inputs fee">
-                            <label for="fee">Fee:</label>
-                            <input type="text" name="fee" id="fee" value="0"/>
-                            <p class="error">None</p>
-                        </div>
 
                         <div class="inputs water">
                             <label for="water">Water:</label>
@@ -660,48 +621,12 @@ if(isset($_POST['city']) AND isset($_POST['category']) AND isset($_POST['transac
                             <p class="error">None</p>
                         </div>
 
-                        <div class="inputs rooms">
-                            <label for="rooms">Empty rooms:</label>
-                            <input type="text" name="rooms" id="rooms" value="0"/>
-                            <p class="error">None</p>
-                        </div>
-
-
+                       
                         
                     </div>
                 </div>
 
-                
 
-                
-
-                <div class="informations noLand features">
-
-                    <h2>Featuress</h2>
-
-                    <div class="grid">
-                        <label for="wifi"> <input type="checkbox" id="wifi" name="wifi" value="wifi"/> WI-FI  </label>
-                        <label for="cooling"> <input type="checkbox" id="cooling" name="cooling" value="cooling"/> Cooled rooms  </label>
-                        <label for="balcony"> <input type="checkbox" id="balcony" name="balcony" value="balcony"/> Balcony  </label>
-                        <label for="laundry"> <input type="checkbox" id="laundry" name="laundry" value="laundry"/> Laundry  </label>
-                        <label for="pool"> <input type="checkbox" id="pool" name="pool" value="pool"/> Pool  </label>
-                    </div>               
-    
-                </div>
-
-                <div class="informations land amenities">
-
-                    <h2>Amenities</h2>
-
-                    <div class="grid">
-                        <label for="gym"> <input type="checkbox" id="gym" name="gym" value="gym"/> Gym  </label>
-                        <label for="restaurant"> <input type="checkbox" id="restaurant" name="restaurant" value="restaurant"/> Restaurant  </label>
-                        <label for="park"> <input type="checkbox" id="park" name="park" value="park"/> Park  </label>
-                        <label for="club"> <input type="checkbox" id="club" name="club" value="club"/> Club  </label>
-                        <label for="supermarket "> <input type="checkbox" id="supermarket " name="supermarket " value="supermarket "/> Supermarket   </label>
-                    </div>
-
-                </div>
 
                 <div class="informations">
 
@@ -757,6 +682,8 @@ if(isset($_POST['city']) AND isset($_POST['category']) AND isset($_POST['transac
                 
             </form>
 
+            <div class="image"></div>
+
 
         </div><!--container-->
     </div>
@@ -767,58 +694,16 @@ if(isset($_POST['city']) AND isset($_POST['category']) AND isset($_POST['transac
 
         var properties = document.getElementsByClassName("property");
         var transactions = document.getElementsByClassName("transaction");
-        var noLand = document.getElementsByClassName("noLand");
-        var noBuild = document.getElementsByClassName("noBuild");
 
         var billing = document.querySelectorAll('.billing');
 
+        
 
         // alert(properties[0].className.includes("house"));
         // alert(transaction.length);
         // alert(noLand.length);
         // console.log('asd');
         // alert(noBuild.length);
-
-        category.addEventListener('change', function(){
-
-            let identifier = 'informations property '+ category.value;
-
-            for (let i = 0; i < properties.length; i++) {
-                if(identifier == properties[i].className){
-                    properties[i].style.display = 'grid';
-                } else {
-                    properties[i].style.display = 'none';
-                }
-                
-                // console.log(informations[i].className);
-            }
-
-            for (let i = 0; i < noLand.length; i++) {
-                if(identifier == 'informations property land'){
-                    noLand[i].style.display = 'none';
-                } else {
-                    if(noLand[i].className.includes("inputs")){
-                        noLand[i].style.display = 'flex';
-                    } else {
-                        noLand[i].style.display = 'grid';
-                    }
-                    
-                }
-            }
-
-            for (let i = 0; i < noBuild.length; i++) {
-                if(identifier != 'informations property land'){
-                    noBuild[i].style.display = 'none';
-                } else {
-                    if(noBuild[i].className.includes("inputs")){
-                        noBuild[i].style.display = 'flex';
-                    } else {
-                        noBuild[i].style.display = 'grid';
-                    }
-                    
-                }
-            }
-        });
 
         transaction.addEventListener('change', function(){
             

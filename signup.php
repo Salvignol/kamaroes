@@ -72,61 +72,111 @@ if(isset($_POST['firstname']) AND isset($_POST['lastname' ]) AND isset($_POST['e
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="471738037773-82u1a78lucblatebde31kdt7tg2b3123.apps.googleusercontent.com">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/authentication.css">
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <div class="image"></div>
-        <div class="signin">
-        <form method="post" action="signup.php">
-
-            <div class="authentication">
-                <div class="authentication_names">
-                    <input type="text" name="firstname" placeholder="First Name" value="<?php echo $_POST['firstname'] ?? '';?>"/>
+    <div class="main-wrapper">
+        <div class="container">
+            <div class="image"></div>
+            <div class="form-container">
+                <form method="post" action="signup.php">
                     
+                    <h1>Sign up</h1>
+
+                    <div class="authentication">
+
+                        <!--names-->
+                        <div class="input-container">
+                            <div class="inputs">
+                                <label for="firstname">First name</label>
+                                <input type="text" name="firstname" placeholder="First Name" value="<?php echo $_POST['firstname'] ?? '';?>"/>
+                            </div>
+
+                            <div class="inputs">
+                                <label for="lastname">Last name</label>
+                                <input type="text" id="lastname" name="lastname" placeholder="Last Name" value="<?php echo $_POST['lastname'] ?? '';?>"/>
+                            </div>
+                        </div>
+
+                        <div class="inputs">
+                            <label for="email">E-mail</label>
+                            <input type="text" id="email" name="email" placeholder="Email Adress" />
+                        </div>
+
+                        
+                        <!-- <p>
+                            <?php if(isset($error['email']))
+                            {
+                                echo $error['email'];
+                            }?>
+                        </p> -->
+
+                        <!--passwords-->
+                        <div class="input-container">
+                            <div class="inputs">
+                                <label for="firstname">Password</label>
+                                <input type="password" name="password" placeholder="Password" />
+                            </div>
+
+                            <div class="inputs">
+                                <label for="password_confirm"> Confirm password </label>
+                                <input type="password" id="password_confirm" name="password_confirm" placeholder="Password" />
+                            </div>
+                        </div>
+                        
+                        <!-- <p>
+                            <?php if(isset($error['password']))
+                            {
+                                echo $error['password'];
+                            }
+                            ?>
+                        </p> -->
+                        <div class="buttons">
+                        <input class="login" type="submit" value="Sign Up"/>
+                    </div>
+
+                   
+                    <p class="redirecting-message">Already on Kamaroes <a href="signin.php">Log in</a></p>
+
+                    <div class="sepa">
+                        <div class="line"></div>
+                        <p class="or">or</p>
+                        <div class="line"></div>
+                    </div>
+                    </div>
+                        
+                   
+                    
+                    <div class="login-buttons">
+
+                        <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+
+                        <div onclick="startApp();" class="image-logo">
+                            <img src="assets/images/search.png" alt="">
+                            <p>Sign in with Google</p>
+                        </div>
+
+                        <div class="image-logo">
+                            <img src="assets/images/facebook.png" alt="">
+                            <p>Sign in with Google</p>
+                        </div>
+
+                    </div>
                     
 
                     
-                    <input type="text" name="lastname" placeholder="Last Name" value="<?php echo $_POST['lastname'] ?? '';?>"/>
-                </div>
-                <input type="text" name="email" placeholder="Email Adress" />
-                <p>
-                    <?php if(isset($error['email']))
-                    {
-                        echo $error['email'];
-                    }?>
-                </p>
-                <input type="password" name="password" placeholder="Password" />
-                <input type="password" name="password_confirm" placeholder="Password" />
-                <p>
-                    <?php if(isset($error['password']))
-                    {
-                        echo $error['password'];
-                    }
-                    ?>
-                </p>
+                </form>
             </div>
-                
-            <div class="buttons">
-               <input class="login" type="submit" value="Sign Up"/>
-            </div>
+        </div><!--container-->
 
-            <p>Already on Afrolada <a href="signin.php">Log in</a></p>
+        <script src="js/google-signin.js"></script>
 
+        <script src="https://apis.google.com/js/api:client.js"></script>
 
-    
-            <div class="separator"></div>
-            
-            
-            <div class="login-buttons">
-                <button class="login-button"> Login with Google </button>
-                <button class="login-button"> Login with Apple </button>
-                <button class="login-button"> Login with Facebook </button>
-            </div>
-        </form>
-        </div>
+       
     </div>
 </body>
 </html>

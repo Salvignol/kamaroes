@@ -1,7 +1,7 @@
 .main-wrapper {
     display: grid;
     grid-template-columns: auto;
-    padding: 1.5rem;
+    padding: 2rem;
     row-gap: 1rem;
     
     
@@ -67,7 +67,7 @@ form{
     grid-template-columns: 1fr;
     column-gap: 1rem;
     /* border:olive 2px dotted; */
-    row-gap: 1.5rem;   
+    row-gap: 1rem;   
 }
 
 .listing__results{
@@ -100,9 +100,10 @@ form{
     .item_image{
         
         width: 100%;
-        height: 15rem;
         
-        /* border: orange 2px dotted */
+        
+        /* border: orange 2px dotted; */
+        
         
         
     }
@@ -111,9 +112,10 @@ form{
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: .5rem;
+        border-radius: 1rem;
         /* border:2px dotted; */
         transition: box-shadow 0.2s ease-in-out;
+        aspect-ratio: 1/1;
         
     }
     
@@ -126,7 +128,7 @@ form{
         display: flex;
         flex-direction: column;
         font-weight: 400;
-        padding: 1.5rem .5rem;
+        padding: 1rem .5rem;
     
     }
     
@@ -140,8 +142,8 @@ form{
     }
     
     .item__price{
-        font-size: 1.3em;
-        font-weight: 500;
+        font-size: 1.2em;
+        font-weight: 400;
     }
     
     .item__other{
@@ -151,18 +153,22 @@ form{
         align-items: center;
         
         
+        
+        
     }
     
     .item__other p{
         font-size: .9em;
         font-weight: 500;
         padding: .3rem .5rem;
-        border-radius: .5rem;
+        border-radius: .3rem;
         
     }
     
     
     .item__location{
+        /* border: firebrick 2px dotted; */
+        width: 50%;
         font-size: .9em;
         font-weight: 500;
         padding: .7rem 0rem;
@@ -219,6 +225,7 @@ form{
         flex-direction: column;
         padding: 1.5rem 0rem;
         font-weight: 500;
+
     }
     
     
@@ -240,9 +247,10 @@ form{
 @media only screen and (min-width: 768px) {
 
     .main-wrapper {
+        width: 90%;
         /* border: 2px dotted firebrick;   */
-        grid-template-columns: 70% 30%;
-        column-gap: 1rem;
+        grid-template-columns: 60% 40%;
+        column-gap: 2rem;
         row-gap: 2rem;
         justify-content: center;
         padding-top: 5em;
@@ -330,33 +338,31 @@ form{
     .listing{
         
         /* width: 65rem; */
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         justify-content: space-evenly;
+        column-gap: 2rem;
         
     
     }
     
 
-    .item_image{   
-        height: 13rem;
-        
-    }
+   
     
     
     .maps__container{
         
         display: block;
         position: sticky;
-        top: 2vh;
+        top: 10vh;
         
-        height: 96vh;
-        border: white 2px solid;
+        height: 86vh;
+        border: white 0.1px solid;
     }
     
     .maps{
         height: 100%;
         width: 100%;
-        border-radius: .5rem 0rem .5rem .5rem;
+        border-radius: 1rem 0rem 1rem 1rem;
     }
 
 }

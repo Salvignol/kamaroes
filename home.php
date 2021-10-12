@@ -67,15 +67,15 @@ $response = $db->query('SELECT * FROM property');
 
     <?php include "headers/header.php"?>
 
-        <form method="post" action="home.php">
+        <!-- <form method="post" action="home.php">
             <div class="features">
                 SDFSDFSDF
             </div>
-        </form>
+        </form> -->
 
         <div class="main-wrapper ">
 
-            <div class="splide">
+            <!-- <div class="splide">
                 <div class="splide__track">
                     <ul class="splide__list">
                         <li class="splide__slide" > <img src="assets/images/wildBannerAd.png" alt=""></li>
@@ -84,19 +84,15 @@ $response = $db->query('SELECT * FROM property');
                     </ul>
                 </div>
                  
-            </div>
+            </div> -->
 
-            <div class="banners">
+            <!-- <div class="banners">
                 <div class="banner">
                     <img src="assets/images/wildBannerAd.png" alt="">
                 </div>
-            </div>
+            </div> -->
 
-
-
-            <section class="page">
-                <div class="listing">
-                    <div class="listing__results">
+            <div class="listing__results">
                         <h3 class="results__title"> Apartment to Rent in Bastos, Yaounde</h3>
                         <div class="options">
                             <p class="results__number">1566 properties found on Kamaroes </p>
@@ -104,7 +100,18 @@ $response = $db->query('SELECT * FROM property');
                         </div>
                     </div>
 
+
+
+            <section class="page">
+                <div class="listing">
+                    
+
                 <?php
+
+                function randomPicker($array){
+                    $key = array_rand($array, 1);
+                    return $array[$key];
+                }
                 
                 $i = 0; 
                 $j = 0;
@@ -148,12 +155,16 @@ $response = $db->query('SELECT * FROM property');
         
     </footer>
 
+    
+    
+
     <script src="js/maps.js"></script>
 
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhhm3d1QKJsj5PcEvxtpiDRxm7imNEAR4&callback=initMap&libraries=&v=weekly"
       async
     ></script>
+
 
 </body>
 </html>

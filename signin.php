@@ -51,44 +51,75 @@ if(isset($_POST['email']) AND isset($_POST['password' ])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="471738037773-82u1a78lucblatebde31kdt7tg2b3123.apps.googleusercontent.com">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/authentication.css">
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <div class="image"></div>
-        <div class="signin">
-        <form method="post" action = signin.php>
+<div class="main-wrapper">
+        <div class="container">
+            <div class="image"></div>
+            <div class="form-container">
+                <form method="post" action = signin.php>
+                    
+                    <h1>Sign in</h1>
 
-            <div class="authentication">
-                <input type="text" name="email" placeholder="Email Adress" />
-                <input type="password" name="password" placeholder="Password" />
-            </div>
-                
-            <div class="buttons">
-               <input class="login" type="submit" value="Login"/>
-            </div>
+                    <div class="authentication">
 
-            <p>Forgot Password?</p>
-            <p>Not a member yet? <a href="signup.php">Sign up</a></p>
-            
-    
-            <div class="separator"></div>
-            
-            
-            <div class="login-buttons">
-                <button class="login-button"> Login with Google </button>
-                <button class="login-button"> Login with Apple </button>
-                <button class="login-button"> Login with Facebook </button>
+                        <!--names-->
+                        <div class="inputs">
+                                <label for="email">E-mail</label>
+                                <input type="text" id="email" name="email" placeholder="Email Adress" />
+                        </div>
+                        
+                        <div class="inputs">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" placeholder="Password" />
+                            </div>
+                        <!-- <p>
+                            <?php if(isset($error['email']))
+                            {
+                                echo $error['email'];
+                            }?>
+                        </p> -->
+
+                        
+                    <div class="buttons">
+                        <input class="login" type="submit" value="Log in"/>
+                    </div>
+
+                    <p class="redirecting-message">Not a member yet? <a href="signup.php">Join us</a></p>
+
+
+                    <div class="sepa">
+                        <div class="line"></div>
+                        <p class="or">or</p>
+                        <div class="line"></div>
+                    </div>
+                    
+                    <div class="login-buttons">
+                        
+
+                        <div class="image-logo">
+                            <img src="assets/images/search.png" alt="">
+                            <p>Sign in with Google</p>
+                        </div>
+
+                        <div class="image-logo">
+                            <img src="assets/images/facebook.png" alt="">
+                            <p>Sign in with Google</p>
+                        </div>
+
+                        
+                    </div>
+                </form>
             </div>
-        </form>
-        </div>
+        </div><!--container-->
     </div>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
 
-<script>
-    var image = document.querySelector('.image');
-    image.style.display = 'block';
-</script>
+
 </html>
